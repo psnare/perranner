@@ -19,7 +19,7 @@
        All vw values derived from Figma coordinates
     ─────────────────────────────────────────────────── */
     :root {
-      --yellow:   #e8e84a;
+      --yellow:   #A5EA9F;
       --black:    #0d0d0d;
       --pad:      clamp(20px, 12.1094vw, 124px);  /* 124/1024 */
       --stroke:   max(6px, 0.5859vw);              /* 6/1024   */
@@ -31,7 +31,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--yellow);
+      background: #000000;
       color: var(--black);
       font-family: 'Inter', sans-serif;
       font-optical-sizing: auto;
@@ -47,7 +47,7 @@
        Tag:    x=458, y=207, fs=30px, weight=500
     ──────────────────────────────────────────────────── */
     .hero {
-      background: var(--yellow);
+      background: var(--black);
       padding: clamp(32px, 10.2539vw, 105px) var(--pad) clamp(48px, 22.2656vw, 228px);
       overflow: hidden;
     }
@@ -61,7 +61,7 @@
       line-height: 1.4278;                       /* (362-105)/180 */
       letter-spacing: -0.02em;
       text-transform: uppercase;
-      color: var(--black);
+      color: var(--yellow);
     }
 
     .hero__name .line-per {
@@ -81,7 +81,7 @@
       font-size: clamp(14px, 2.9297vw, 30px); /* 30/1024 */
       font-weight: 500;
       line-height: 1.5;
-      color: var(--black);
+      color: var(--yellow);
       text-align: right;
       white-space: nowrap;
       animation: stamp-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.6s;
@@ -103,7 +103,7 @@
 
     /* ─── INTRO ──────────────────────────────────────── */
     .intro {
-      background: var(--yellow);
+      background: var(--black);
       padding: 0 var(--pad) clamp(32px, 17.09vw, 175px);
     }
 
@@ -111,7 +111,7 @@
       font-size: clamp(16px, 2.9297vw, 30px);
       font-weight: 400;
       line-height: 1.3333;
-      color: var(--black);
+      color: var(--yellow);
       max-width: 55vw;
     }
 
@@ -120,7 +120,7 @@
     ──────────────────────────────────────────────────── */
     .accordion {
       list-style: none;
-      border-top: var(--border-b);
+      border-top: var(--border-y);
     }
 
     .acc-item { border-bottom: var(--border-b); }
@@ -180,7 +180,7 @@
     }
 
     /* ─── KONTAKT ────────────────────────────────────── */
-    .kontakt { background: var(--yellow); }
+    .kontakt { background: var(--black); }
 
     .kontakt__copy {
       padding: clamp(32px, 10.3516vw, 106px) var(--pad);
@@ -190,7 +190,7 @@
       font-size: clamp(22px, 3.9063vw, 40px); /* 40/1024 */
       font-weight: 700;
       line-height: 1.25;
-      color: var(--black);
+      color: var(--yellow);
       max-width: clamp(300px, 59.5703vw, 610px);
       margin-bottom: clamp(20px, 6.5vw, 67px);
     }
@@ -199,7 +199,7 @@
       font-size: clamp(16px, 2.9297vw, 30px);
       font-weight: 400;
       line-height: 1.3333;
-      color: var(--black);
+      color: var(--yellow);
       max-width: clamp(280px, 52.9297vw, 542px);
     }
 
@@ -207,10 +207,10 @@
 
     .kontakt-links {
       list-style: none;
-      border-top: var(--border-b);
+      border-top: var(--border-y);
     }
 
-    .kontakt-link-item { border-bottom: var(--border-b); }
+    .kontakt-link-item { border-bottom: var(--border-y); }
     .kontakt-link-item:last-child { border-bottom: none; }
 
     .kontakt-link {
@@ -223,12 +223,12 @@
       font-family: 'Inter', sans-serif;
       font-size: clamp(16px, 2.9297vw, 30px);
       font-weight: 700;
-      color: var(--black);
+      color: var(--yellow);
       text-decoration: none;
       transition: background 0.2s ease, color 0.2s ease;
     }
 
-    .kontakt-link:hover { background: var(--black); color: var(--yellow); }
+    .kontakt-link:hover { background: var(--yellow); color: var(--black); }
 
     .kontakt-link .arrow {
       font-size: clamp(20px, 3.9063vw, 40px);
@@ -267,7 +267,7 @@
     /* ─── FOOTER MARQUEE ─────────────────────────────── */
     .footer {
       background: var(--black);
-      height: clamp(60px, 15.918vw, 163px);
+      height: clamp(80px, 23.877vw, 244px);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -277,17 +277,17 @@
       display: flex;
       align-items: center;
       white-space: nowrap;
-      animation: marquee 18s linear infinite;
+      animation: marquee 8.64s linear infinite;
       will-change: transform;
     }
 
     .footer__marquee-item {
-      font-size: clamp(13px, 1.9531vw, 20px);
+      font-size: clamp(39px, 5.8594vw, 60px);
       font-weight: 600;
       font-style: italic;
       letter-spacing: 0.02em;
       color: var(--yellow);
-      padding-right: 90px;
+      padding-right: 270px;
     }
 
     @keyframes marquee {
@@ -315,7 +315,7 @@
   </section>
 
   <!-- TJÄNSTER -->
-  <section aria-label="Tjänster">
+  <section aria-label="Tjänster" style="background: var(--yellow);">
     <ul class="accordion">
 
       <li class="acc-item">
@@ -393,7 +393,7 @@
         </a>
       </li>
       <li class="kontakt-link-item">
-        <a href="mailto:per@peranner.se" class="kontakt-link">
+        <a href="/cdn-cgi/l/email-protection#4333263103332631222d2d26316d3026" class="kontakt-link">
           <span>Mejla</span>
           <span class="arrow" aria-hidden="true">-></span>
         </a>
@@ -445,7 +445,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Accordion — smooth open/close, one panel at a time
     document.querySelectorAll('.acc-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -464,12 +464,4 @@
         if (!isOpen) {
           btn.setAttribute('aria-expanded', 'true');
           btn.querySelector('.acc-icon').textContent = '×';
-          btn.closest('.acc-item').classList.add('is-open');
-          document.getElementById(panelId).classList.add('open');
-        }
-      });
-    });
-  </script>
-
-</body>
-</html>
+          btn.closest('.acc-item').cla
