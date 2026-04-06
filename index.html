@@ -445,23 +445,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Accordion — smooth open/close, one panel at a time
-    document.querySelectorAll('.acc-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const isOpen = btn.getAttribute('aria-expanded') === 'true';
-        const panelId = btn.getAttribute('aria-controls');
+  <script src="accordion.js" defer></script>
 
-        // Close all
-        document.querySelectorAll('.acc-btn').forEach(b => {
-          b.setAttribute('aria-expanded', 'false');
-          b.querySelector('.acc-icon').textContent = '+';
-          b.closest('.acc-item').classList.remove('is-open');
-        });
-        document.querySelectorAll('.acc-panel').forEach(p => p.classList.remove('open'));
-
-        // Open clicked if it was closed
-        if (!isOpen) {
-          btn.setAttribute('aria-expanded', 'true');
-          btn.querySelector('.acc-icon').textContent = '×';
-          btn.closest('.acc-item').cla
+</body>
+</html>
