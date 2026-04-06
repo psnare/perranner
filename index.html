@@ -3,36 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Per Ränner — certifierad trädgårdsmästare i Göteborg. Trädgårdsskötsel, anläggning, beskärning och rådgivning för privatpersoner." />
   <title>Per Ränner — Trädgårdsmästare i Göteborg</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,700;0,14..32,900;1,14..32,900&display=swap" rel="stylesheet" />
 
   <style>
-    /* ─────────────────────────────────────────
-       RESET
-    ───────────────────────────────────────── */
+    /* ─── RESET ─────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ─────────────────────────────────────────
-       DESIGN TOKENS
-       Reference viewport: 1024px
-       Mobile floor: 390px
-       clamp(min, preferred-vw, max)
-    ───────────────────────────────────────── */
+    /* ─── TOKENS ─────────────────────────────────────
+       Reference frame: 1024px
+       All vw values derived from Figma coordinates
+    ─────────────────────────────────────────────────── */
     :root {
-      --yellow:      #e8e84a;
-      --black:       #0d0d0d;
-
-      /* Padding: 124/1024 = 12.1094vw → 47px at 390px */
-      --pad:         clamp(20px, 12.1094vw, 124px);
-
-      /* Stroke: 6/1024 = 0.5859vw, min 6px */
-      --stroke:      max(6px, 0.5859vw);
-      --border-y:    var(--stroke) solid var(--yellow);
-      --border-b:    var(--stroke) solid var(--black);
+      --yellow:   #e8e84a;
+      --black:    #0d0d0d;
+      --pad:      clamp(20px, 12.1094vw, 124px);  /* 124/1024 */
+      --stroke:   max(6px, 0.5859vw);              /* 6/1024   */
+      --border-b: var(--stroke) solid var(--black);
+      --border-y: var(--stroke) solid var(--yellow);
     }
 
+    /* ─── BASE ───────────────────────────────────────── */
     html { scroll-behavior: smooth; }
 
     body {
@@ -45,105 +40,68 @@
       overflow-x: hidden;
     }
 
-    /* ═══════════════════════════════════════
-       HERO
+    /* ─── HERO ───────────────────────────────────────────
        Frame: 1024px
-       Name: x=124, y=105, fs=180px
-       RÄNNER: y=362 → line-height = 257/180 = 1.4278
-       Tag: x=458, y=207, fs=30px, weight=500
-    ═══════════════════════════════════════ */
+       PER:    x=124, y=105, fs=180px
+       RÄNNER: y=362  → line-height = (362-105)/180 = 1.4278
+       Tag:    x=458, y=207, fs=30px, weight=500
+    ──────────────────────────────────────────────────── */
     .hero {
       background: var(--yellow);
       padding: clamp(32px, 10.2539vw, 105px) var(--pad) clamp(48px, 22.2656vw, 228px);
       overflow: hidden;
     }
 
-    .hero__inner {
-      position: relative;
-    }
+    .hero__inner { position: relative; }
 
     .hero__name {
-      font-size: clamp(48px, 17.5781vw, 180px);
+      font-size: clamp(48px, 17.5781vw, 180px); /* 180/1024 */
       font-weight: 900;
       font-style: italic;
-      line-height: 1.4278;
+      line-height: 1.4278;                       /* (362-105)/180 */
       letter-spacing: -0.02em;
       text-transform: uppercase;
       color: var(--black);
     }
 
-    /* ═══════════════════════════════════════
-       HERO ANIMATIONS
-    ═══════════════════════════════════════ */
-
-    @keyframes slide-in-per {
-      0% {
-        transform: translateX(-60vw);
-        opacity: 0;
-        filter: blur(20px);
-      }
-      70% {
-        filter: blur(2px);
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-        filter: blur(0px);
-      }
-    }
-
-    @keyframes slide-in-ranner {
-      0% {
-        transform: translateX(-60vw);
-        opacity: 0;
-        filter: blur(20px);
-      }
-      70% {
-        filter: blur(2px);
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-        filter: blur(0px);
-      }
-    }
-
-    @keyframes stamp-in {
-      0%   { transform: scale(1.4); opacity: 0; filter: blur(4px); }
-      60%  { transform: scale(0.95); opacity: 1; filter: blur(0px); }
-      80%  { transform: scale(1.03); }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
     .hero__name .line-per {
       display: block;
-      animation: slide-in-per 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
-      animation-delay: 0.05s;
+      animation: slide-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) both 0.05s;
     }
 
     .hero__name .line-ranner {
       display: block;
-      animation: slide-in-ranner 0.6375s cubic-bezier(0.16, 1, 0.3, 1) both;
-      animation-delay: 0.2s;
+      animation: slide-in 0.6375s cubic-bezier(0.16, 1, 0.3, 1) both 0.2s; /* 15% faster */
     }
 
     .hero__tag {
       position: absolute;
-      top: clamp(10px, 9.9609vw, 102px);
+      top: clamp(10px, 9.9609vw, 102px); /* (207-105)/1024 */
       right: 0;
-      font-size: clamp(14px, 2.9297vw, 30px);
+      font-size: clamp(14px, 2.9297vw, 30px); /* 30/1024 */
       font-weight: 500;
       line-height: 1.5;
       color: var(--black);
       text-align: right;
       white-space: nowrap;
-      animation: stamp-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-      animation-delay: 0.6s;
+      animation: stamp-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.6s;
       transform-origin: right center;
     }
 
+    @keyframes slide-in {
+      from { transform: translateX(-60vw); opacity: 0; filter: blur(20px); }
+      70%  { filter: blur(2px); opacity: 1; }
+      to   { transform: translateX(0);    opacity: 1; filter: blur(0); }
+    }
+
+    @keyframes stamp-in {
+      from { transform: scale(1.4); opacity: 0; filter: blur(4px); }
+      60%  { transform: scale(0.95); opacity: 1; filter: blur(0); }
+      80%  { transform: scale(1.03); }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    /* ─── INTRO ──────────────────────────────────────── */
     .intro {
       background: var(--yellow);
       padding: 0 var(--pad) clamp(32px, 17.09vw, 175px);
@@ -157,26 +115,16 @@
       max-width: 55vw;
     }
 
-    /* ═══════════════════════════════════════
-       TJÄNSTER ACCORDION
+    /* ─── TJÄNSTER ───────────────────────────────────────
        Row height: 153/1024 = 14.9414vw
-    ═══════════════════════════════════════ */
-    .tjanster {
-      background: var(--yellow);
-    }
-
+    ──────────────────────────────────────────────────── */
     .accordion {
       list-style: none;
       border-top: var(--border-b);
     }
 
-    .acc-item {
-      border-bottom: var(--border-b);
-    }
-
-    .acc-item.is-open {
-      border-bottom: max(4px, 0.4102vw) solid var(--yellow);
-    }
+    .acc-item { border-bottom: var(--border-b); }
+    .acc-item.is-open { border-bottom: max(4px, 0.4102vw) solid var(--yellow); }
 
     .acc-btn {
       width: 100%;
@@ -209,7 +157,6 @@
       font-weight: 700;
       line-height: 1;
       flex-shrink: 0;
-      display: inline-block;
     }
 
     .acc-panel {
@@ -232,19 +179,15 @@
       color: var(--yellow);
     }
 
-    /* ═══════════════════════════════════════
-       KONTAKT
-    ═══════════════════════════════════════ */
-    .kontakt {
-      background: var(--yellow);
-    }
+    /* ─── KONTAKT ────────────────────────────────────── */
+    .kontakt { background: var(--yellow); }
 
     .kontakt__copy {
       padding: clamp(32px, 10.3516vw, 106px) var(--pad);
     }
 
     .kontakt__heading {
-      font-size: clamp(22px, 3.9063vw, 40px);
+      font-size: clamp(22px, 3.9063vw, 40px); /* 40/1024 */
       font-weight: 700;
       line-height: 1.25;
       color: var(--black);
@@ -260,22 +203,15 @@
       max-width: clamp(280px, 52.9297vw, 542px);
     }
 
-    .kontakt__body p + p {
-      margin-top: clamp(12px, 3.5vw, 36px);
-    }
+    .kontakt__body p + p { margin-top: clamp(12px, 3.5vw, 36px); }
 
     .kontakt-links {
       list-style: none;
       border-top: var(--border-b);
     }
 
-    .kontakt-link-item {
-      border-bottom: var(--border-b);
-    }
-
-    .kontakt-link-item:last-child {
-      border-bottom: none;
-    }
+    .kontakt-link-item { border-bottom: var(--border-b); }
+    .kontakt-link-item:last-child { border-bottom: none; }
 
     .kontakt-link {
       display: flex;
@@ -292,14 +228,7 @@
       transition: background 0.2s ease, color 0.2s ease;
     }
 
-    .kontakt-link:hover {
-      background: var(--black);
-      color: var(--yellow);
-    }
-
-    .kontakt-link:hover .arrow {
-      color: var(--yellow);
-    }
+    .kontakt-link:hover { background: var(--black); color: var(--yellow); }
 
     .kontakt-link .arrow {
       font-size: clamp(20px, 3.9063vw, 40px);
@@ -309,9 +238,7 @@
       font-feature-settings: "liga" 1, "calt" 1;
     }
 
-    /* ═══════════════════════════════════════
-       PRINCIPER
-    ═══════════════════════════════════════ */
+    /* ─── PRINCIPER ──────────────────────────────────── */
     .principer {
       background: var(--black);
       border-top: var(--border-y);
@@ -322,16 +249,12 @@
       border-bottom: var(--border-y);
     }
 
-    .princip-item:first-child {
-      border-top: none;
-    }
-
     .princip-title {
       font-size: clamp(16px, 2.9297vw, 30px);
       font-weight: 700;
+      line-height: 1.3333;
       color: var(--yellow);
       margin-bottom: clamp(4px, 1.2vw, 12px);
-      line-height: 1.3333;
     }
 
     .princip-text {
@@ -341,15 +264,10 @@
       color: var(--yellow);
     }
 
-    /* ═══════════════════════════════════════
-       FOOTER
-       height: 163/1024 = 15.92vw
-       copyright: right-aligned, italic
-    ═══════════════════════════════════════ */
+    /* ─── FOOTER MARQUEE ─────────────────────────────── */
     .footer {
       background: var(--black);
-      border-top: var(--border-y);
-      height: clamp(60px, 15.9180vw, 163px);
+      height: clamp(60px, 15.918vw, 163px);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -376,42 +294,11 @@
       from { transform: translateX(-50%); }
       to   { transform: translateX(0); }
     }
-    }
-
-    /* ═══════════════════════════════════════
-       SCROLL ENTRANCE ANIMATIONS
-       IntersectionObserver adds .is-visible
-       Elements default to visible so no
-       content is ever hidden without JS
-    ═══════════════════════════════════════ */
-    /* reveal: hidden by default in CSS, no JS needed for init */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition:
-        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal.delay-1 { transition-delay: 0.1s; }
-    .reveal.delay-2 { transition-delay: 0.2s; }
-    .reveal.delay-3 { transition-delay: 0.3s; }
-
-    /* ═══════════════════════════════════════
-       RESPONSIVE CLAMP
-       At wide viewports switch to px so
-       nothing becomes absurdly large
-    ═══════════════════════════════════════ */
   </style>
 </head>
 <body>
 
-  <!-- ══ HERO ══ -->
+  <!-- HERO -->
   <section class="hero" aria-label="Introduktion">
     <div class="hero__inner">
       <h1 class="hero__name">
@@ -422,16 +309,16 @@
     </div>
   </section>
 
-  <!-- ══ INTRO ══ -->
+  <!-- INTRO -->
   <section class="intro" aria-label="Om">
-    <p class="intro__text reveal">Trädgårdsarbete är ett hantverk — det kräver kunskap om växter, jordmån, klimat och de system som gör en trädgård levande på sikt.</p>
+    <p class="intro__text">Trädgårdsarbete är ett hantverk — det kräver kunskap om växter, jordmån, klimat och de system som gör en trädgård levande på sikt.</p>
   </section>
 
-  <!-- ══ TJÄNSTER ══ -->
-  <section class="tjanster" aria-label="Tjänster">
+  <!-- TJÄNSTER -->
+  <section aria-label="Tjänster">
     <ul class="accordion">
 
-      <li class="acc-item reveal">
+      <li class="acc-item">
         <button class="acc-btn" aria-expanded="false" aria-controls="p1" id="b1">
           <span class="acc-label">Trädgårdsskötsel</span>
           <span class="acc-icon" aria-hidden="true">+</span>
@@ -443,7 +330,7 @@
         </div>
       </li>
 
-      <li class="acc-item reveal delay-1">
+      <li class="acc-item">
         <button class="acc-btn" aria-expanded="false" aria-controls="p2" id="b2">
           <span class="acc-label">Anläggning &amp; Plantering</span>
           <span class="acc-icon" aria-hidden="true">+</span>
@@ -455,7 +342,7 @@
         </div>
       </li>
 
-      <li class="acc-item reveal delay-2">
+      <li class="acc-item">
         <button class="acc-btn" aria-expanded="false" aria-controls="p3" id="b3">
           <span class="acc-label">Beskärning &amp; Trädvård</span>
           <span class="acc-icon" aria-hidden="true">+</span>
@@ -467,7 +354,7 @@
         </div>
       </li>
 
-      <li class="acc-item reveal delay-3">
+      <li class="acc-item">
         <button class="acc-btn" aria-expanded="false" aria-controls="p4" id="b4">
           <span class="acc-label">Råd &amp; Konsultation</span>
           <span class="acc-icon" aria-hidden="true">+</span>
@@ -482,36 +369,36 @@
     </ul>
   </section>
 
-  <!-- ══ KONTAKT ══ -->
+  <!-- KONTAKT -->
   <section class="kontakt" aria-label="Kontakt">
     <div class="kontakt__copy">
-      <h2 class="kontakt__heading reveal">Har du en trädgård i Göteborg<br>som behöver kunniga händer?</h2>
-      <div class="kontakt__body reveal delay-1">
+      <h2 class="kontakt__heading">Har du en trädgård i Göteborg<br>som behöver kunniga händer?</h2>
+      <div class="kontakt__body">
         <p>Hör av dig — berätta lite om trädgården och vad du funderar på.</p>
         <p>Jag arbetar med privatpersoner i Göteborg och närmaste omgivning.</p>
         <p>Löpande skötsel, enstaka insatser eller rådgivning — vi hittar ett upplägg som passar.</p>
       </div>
     </div>
     <ul class="kontakt-links">
-      <li class="kontakt-link-item reveal">
+      <li class="kontakt-link-item">
         <a href="https://per722095.typeform.com/to/fZ0P3gGr" class="kontakt-link" target="_blank" rel="noopener noreferrer">
           <span>Fyll i formulär</span>
           <span class="arrow" aria-hidden="true">-></span>
         </a>
       </li>
-      <li class="kontakt-link-item reveal delay-1">
+      <li class="kontakt-link-item">
         <a href="tel:+46700000000" class="kontakt-link">
           <span>Ring</span>
           <span class="arrow" aria-hidden="true">-></span>
         </a>
       </li>
       <li class="kontakt-link-item">
-        <a href="/cdn-cgi/l/email-protection#a5d5c0d7e5d5c0d7c4cbcbc0d78bd6c0" class="kontakt-link">
+        <a href="mailto:per@peranner.se" class="kontakt-link">
           <span>Mejla</span>
           <span class="arrow" aria-hidden="true">-></span>
         </a>
       </li>
-      <li class="kontakt-link-item reveal delay-3">
+      <li class="kontakt-link-item">
         <a href="https://wa.me/" class="kontakt-link" target="_blank" rel="noopener noreferrer">
           <span>Whatsapp</span>
           <span class="arrow" aria-hidden="true">-></span>
@@ -520,26 +407,25 @@
     </ul>
   </section>
 
-  <!-- ══ PRINCIPER ══ -->
+  <!-- PRINCIPER -->
   <section class="principer" aria-label="Principer">
-    <div class="princip-item reveal">
+    <div class="princip-item">
       <p class="princip-title">Ekologiskt tänk.</p>
       <p class="princip-text">Minimalt med kemikalier, fokus på biologisk mångfald och långsiktig markhälsa.</p>
     </div>
-    <div class="princip-item reveal delay-1">
+    <div class="princip-item">
       <p class="princip-title">Ståndortsanpassat.</p>
       <p class="princip-text">Rätt växt på rätt plats — utifrån ljus, jord och klimatzon.</p>
     </div>
-    <div class="princip-item reveal delay-2">
+    <div class="princip-item">
       <p class="princip-title">Hantverksmässigt.</p>
       <p class="princip-text">Varje ingrepp görs med kunskap om vad det ger växten på lång sikt.</p>
     </div>
   </section>
 
-  <!-- ══ FOOTER ══ -->
+  <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="footer__marquee" aria-label="©2026 PER RÄNNER">
-      <!-- First set -->
       <span class="footer__marquee-item">©2026 PER RÄNNER</span>
       <span class="footer__marquee-item">©2026 PER RÄNNER</span>
       <span class="footer__marquee-item">©2026 PER RÄNNER</span>
@@ -548,7 +434,6 @@
       <span class="footer__marquee-item">©2026 PER RÄNNER</span>
       <span class="footer__marquee-item">©2026 PER RÄNNER</span>
       <span class="footer__marquee-item">©2026 PER RÄNNER</span>
-      <!-- Duplicate set for seamless loop -->
       <span class="footer__marquee-item" aria-hidden="true">©2026 PER RÄNNER</span>
       <span class="footer__marquee-item" aria-hidden="true">©2026 PER RÄNNER</span>
       <span class="footer__marquee-item" aria-hidden="true">©2026 PER RÄNNER</span>
@@ -561,53 +446,30 @@
   </footer>
 
   <script>
-    // ── Scroll ──────────────────────────────────
-    // Delay observation so browser paints the hidden state first
-    // before IntersectionObserver fires
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.08,
-      rootMargin: '0px 0px -60px 0px'
-    });
-
-    // Wait two frames so initial hidden state is painted
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-      });
-    });
-
-    // ── Accordion ──────────────────────────────────────
+    // Accordion — smooth open/close, one panel at a time
     document.querySelectorAll('.acc-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const isOpen = btn.getAttribute('aria-expanded') === 'true';
-        const targetId = btn.getAttribute('aria-controls');
+        const panelId = btn.getAttribute('aria-controls');
 
-        // Close all panels
+        // Close all
         document.querySelectorAll('.acc-btn').forEach(b => {
           b.setAttribute('aria-expanded', 'false');
           b.querySelector('.acc-icon').textContent = '+';
           b.closest('.acc-item').classList.remove('is-open');
         });
-        document.querySelectorAll('.acc-panel').forEach(p => {
-          p.classList.remove('open');
-        });
+        document.querySelectorAll('.acc-panel').forEach(p => p.classList.remove('open'));
 
-        // Open clicked panel if it was closed
+        // Open clicked if it was closed
         if (!isOpen) {
           btn.setAttribute('aria-expanded', 'true');
           btn.querySelector('.acc-icon').textContent = '×';
           btn.closest('.acc-item').classList.add('is-open');
-          document.getElementById(targetId).classList.add('open');
+          document.getElementById(panelId).classList.add('open');
         }
       });
     });
   </script>
+
 </body>
 </html>
